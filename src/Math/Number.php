@@ -31,18 +31,40 @@ class Number
     }
 
     public function getBool(){
-        $bool = false;
-        if(in_array('整数',$this->arrDesc)){
-            $bool = is_int($this->value) ? true : false;
-        }
-        if(in_array('自然数',$this->arrDesc)){
-            $bool = (is_int($this->value)||$this->value ==0) ? true : false;
-        }
+        $count = 0;
         if(in_array('正数',$this->arrDesc)){
-            $bool = ($this->value > 0) ? true : false;
+            if($this->value > 0) $count++;
         }
         if(in_array('负数',$this->arrDesc)){
-            $bool = ($this->value < 0) ? true : false;
+            if($this->value < 0) $count++;
+        }
+        if(in_array('整数',$this->arrDesc)){
+            if(is_int($this->value)) $count++;
+        }
+        if(in_array('分数',$this->arrDesc)){
+            if(is_float($this->value < 0)) $count++;
+        }
+
+        if(in_array('零',$this->arrDesc)){
+            if($this->value ==0) $count++;
+        }
+
+        return count($this->arrDesc) == $count ? '正确' : '错误';
+    }
+
+    public function getUnBool(){
+        $bool = false;
+        if(in_array('整数',$this->arrDesc)){
+            if(is_int($this->value)) $bool = true;
+        }
+        if(in_array('零',$this->arrDesc)){
+            if($this->value ==0) $bool = true;
+        }
+        if(in_array('正数',$this->arrDesc)){
+            if($this->value > 0) $bool = true;
+        }
+        if(in_array('负数',$this->arrDesc)){
+            if($this->value < 0) $bool = true;
         }
         if(in_array('分数',$this->arrDesc)){
             $bool = is_float($this->value < 0) ? true : false;

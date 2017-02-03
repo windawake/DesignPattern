@@ -21,17 +21,19 @@ var_dump($exp->evaluation());*/
 
 use Math\Number;
 use Math\Number\Natural;
+use Math\Number\Zero;
 use Math\Number\Positive;
 use Math\Number\Negative;
 use Math\Number\Integer;
 use Math\Number\Fraction;
 
-$number = new Number(-1);
+$number = new Number(1);
 //echo $number->getVal();
-//$number = new Natural($number);
+$number = new Natural($number);
+//$number = new Zero($number);
 //$number = new Positive($number);
-$number = new Negative($number);
-$number = new Integer($number);
+//$number = new Negative($number);
+//$number = new Integer($number);
 //$number = new Fraction($number);
 
 echo $number->getNumber()->getDesc();
