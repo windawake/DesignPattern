@@ -1,10 +1,5 @@
 <?php
-function my_autoload($className)
-{
-    $file = __DIR__."\\src\\".$className.".php";
-    include($file);
-}
-spl_autoload_register("my_autoload");
+include __DIR__.'/autoload.php';
 
 use Repository\Storage\MysqlStorage;
 use Repository\Storage\RedisStorage;
